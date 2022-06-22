@@ -24,7 +24,7 @@ def get_weather():
     data = urllib.request.urlopen(full_url)
     resp = Response(data)
     resp.status_code = 200
-    return render_template('index.html', title='Weather App', data=json.loads(data.read().decode('utf8')))
+    return render_template('index.html', title='Weather App', ville=city, data=json.loads(data.read().decode('utf8')))
 
 ########################################################################################################################
 ### Lancement de l'application lorsqu'on run le code
