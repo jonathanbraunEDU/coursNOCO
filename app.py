@@ -6,6 +6,7 @@ from flask import Flask, render_template, request, abort, Response
 # Initialisation de notre application Flask
 app = Flask(__name__)
 
+#test
 ########################################################################################################################
 # Routage de l'url vers la fonction correspondante
 @app.route('/', methods=['GET', 'POST'])
