@@ -27,7 +27,6 @@ def get_weather():
         full_url = url + '?' + url_values
 
         # Demande d'info sur le site meteo
-        print(full_url)
         data = urllib.request.urlopen(full_url)
 
         # Réception de la réponse

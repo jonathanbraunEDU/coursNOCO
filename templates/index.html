@@ -42,10 +42,19 @@
                 <label for="inputCity1" class="form-label">Entrez un nom de ville pour obtenir sa météo:</label>
                 <input class="form-control" id="inputCity1" name="input_city" placeholder="Nom de ville" aria-describedby="helpCity">
                 <div id="helpCity" class="form-text">Le nom de la ville doit-être en Français</div>
-                <label for="inputDay1" class="form-label">Entrez un nom de ville pour obtenir sa météo:</label>
-                <input class="form-control" id="inputDay1" name="input_city" placeholder="Jour de la semaine" aria-describedby="inputDay1">
-                <div id="helpDay" class="form-text">Le nom du jour doit etre en francais</div>
-                <input type="submit" class="btn btn-primary" value="Rechercher"></input>
+                <select class="form-select" aria-label="Default select">
+                    <option selected>Sélectionner le jour de la semaine</option>
+                    <option value="1">Lundi</option>
+                    <option value="2">Mardi</option>
+                    <option value="3">Mercredi</option>
+                    <option value="4">Jeudi</option>
+                    <option value="5">Vendredi</option>
+                    <option value="6">Samedi</option>
+                    <option value="7">Dimanche</option>
+                </select>
+                <!-- voir pour meilleur retour à la ligne -->
+                <br></br>
+                <input type="submit" class="btn btn-primary" value="Rechercher">
             </form>
 
         </div>
