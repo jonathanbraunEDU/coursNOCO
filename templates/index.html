@@ -42,7 +42,7 @@
                 <label for="inputCity1" class="form-label">Entrez un nom de ville pour obtenir sa météo:</label>
                 <input class="form-control" id="inputCity1" name="input_city" placeholder="Nom de ville" aria-describedby="helpCity">
                 <div id="helpCity" class="form-text">Le nom de la ville doit-être en Français</div>
-                <select class="form-select" aria-label="Default select">
+                <select class="form-select" aria-label="Default select" name="select-day">
                     <option selected>Sélectionner le jour de la semaine</option>
                     <option value="1">Lundi</option>
                     <option value="2">Mardi</option>
@@ -77,11 +77,11 @@
                     </tr>
                     {% for item in data["list"] %}
                         <tr>
-                            <td>{{ item["dt_txt"] }}</td>
-                            <td>{{ item["main"]["temp"] }}°C</td>
-                            <td>{{ item["main"]["humidity"] }}%</td>
-                            <td><div id="weather"><img src="http://openweathermap.org/img/wn/{{ item["weather"][0]["icon"] }}@2x.png"></img> {{ item["weather"][0]["main"] }}</div></td>
-                            <td>{{ '%.2f' % (item["wind"]["speed"]*3.6) }} km/h ({{ item["wind"]["deg"] }} deg)</td>
+                        <td>{{ item["dt_txt"] }}</td>
+                        <td>{{ item["main"]["temp"] }}°C</td>
+                        <td>{{ item["main"]["humidity"] }}%</td>
+                        <td><div id="weather"><img src="http://openweathermap.org/img/wn/{{ item["weather"][0]["icon"] }}@2x.png"></img> {{ item["weather"][0]["main"] }}</div></td>
+                        <td>{{ '%.2f' % (item["wind"]["speed"]*3.6) }} km/h ({{ item["wind"]["deg"] }} deg)</td>
                         </tr>
                     {% endfor %}
                 </table>

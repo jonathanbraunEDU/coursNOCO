@@ -2,6 +2,7 @@
 import urllib
 import json
 from flask import Flask, render_template, request, abort, Response
+from datetime import date
 
 # Initialisation de notre application Flask
 app = Flask(__name__)
@@ -28,6 +29,16 @@ def get_weather():
 
         # Demande d'info sur le site meteo
         data = urllib.request.urlopen(full_url)
+        print(full_url)
+        print(data.read().decode('utf8'))
+
+        def find_day(la_date):
+            day, month, year = (int(i) for i in la_date.split(' '))
+            born = date(year, month, day)
+            return born.strftime("%A")
+
+        la_date = '03 02 2019'
+        print(find_day(la_date))
 
         # Réception de la réponse
         resp = Response(data)
