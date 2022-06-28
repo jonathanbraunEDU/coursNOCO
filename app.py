@@ -7,11 +7,11 @@ from datetime import date
 # Initialisation de notre application Flask
 app = Flask(__name__)
 
+
 ########################################################################################################################
 # Routage de l'url vers la fonction correspondante
 @app.route('/', methods=['GET', 'POST'])
 def get_weather():
-
     ##################################################################################
     # Lorsque le bouton est pressé
     if request.method == 'POST':
@@ -30,23 +30,31 @@ def get_weather():
         # Demande d'info sur le site meteo
         data = urllib.request.urlopen(full_url)
         print(full_url)
-        print(data.read().decode('utf8'))
 
         def find_day(la_date):
-            day, month, year = (int(i) for i in la_date.split(' '))
+            year, month, day = (int(i) for i in la_date.split('-'))
             born = date(year, month, day)
             return born.strftime("%A")
 
-        la_date = '03 02 2019'
-        print(find_day(la_date))
+        data_json = json.loads(data.read().decode('utf8'))
+        print(data_json)
+
+        for item in data_json["list"]:
+            la_date = item["dt_txt"]
+            print(la_date[:10])
+            print(find_day(la_date[:10]))
+
+        # la_date = data_json["list"][0]["dt_txt"]
+        # print(la_date[:10])
 
         # Réception de la réponse
         resp = Response(data)
         resp.status_code = 200
         # Envoi des données de la réponse à la page web, en format json
-        return render_template('index.html', title='Météo NOCO', data=json.loads(data.read().decode('utf8')))
+        return render_template('index.html', title='Météo NOCO', data=data_json)
     else:
         return render_template('index.html', title='Météo NOCO')
+
 
 ########################################################################################################################
 ### Lancement de l'application lorsqu'on run le code
